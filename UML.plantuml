@@ -1,0 +1,66 @@
+@startuml 
+class Driver
+{
+    -String name
+    -double score
+    -double bonification_points
+    -double balance
+    -String position
+    -boolean si_active
+    -ArrayList<String> problems
+}
+
+class Uber
+{
+    +double A_CAR_PERCENTAGE
+    +double B_CAR_PERCENTAGE
+    +double C_CAR_PERCENTAGE
+    -double demand
+}
+
+class Service{}
+
+class Trip
+{
+    -double distance
+    -String origin_trip
+    -Queue<String> stops
+    -String destination
+    -double price
+    -boolean uses_card
+}
+
+class Pasanger
+{
+    -String name
+    -double score
+    -- encrypted --
+    -String credit_data
+}
+
+class City
+{
+    -Graph map
+    -double trafic_level
+    -double price_km
+}
+
+class Vehicle
+{
+    -String placa
+    -char categoria
+}
+
+Driver *-- Vehicle : 1..*
+Trip o-- Pasanger : 1..*
+Trip o-- Driver : 1
+Trip o-- City : 1
+Uber *-- Service : 0..*
+Service *-- Trip : 1..*
+Uber *-- Driver : 1..*
+Uber *-- Pasanger : 1..*
+Uber *-- City : *
+
+@enduml
+
+//info, beneficioarios, clientes, producto, relacion
